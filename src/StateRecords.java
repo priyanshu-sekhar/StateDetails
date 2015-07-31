@@ -8,6 +8,16 @@ import java.util.Arrays;
  */
 public class StateRecords extends StateConstants{
 
+    @GET
+    @Path("/{param}")
+    @Produces("application/json")
+    public String getMsg(@PathParam("param") String shortName) {
+        int index = getShortName(shortName);
+        if (index == -1)
+            return NOT_FOUND;
+        return (new State(NAMES[index], shortName, HEADQS[index], LANGUAGES[index])).toString();
+    }
+
     /**
      * This adds a new State to the existing database
      * @param name Name of the State
@@ -67,6 +77,7 @@ public class StateRecords extends StateConstants{
         return (new State(NAMES[index], shortName, HEADQS[index], LANGUAGES[index])).toString();
 
     }
+
 
     private int getShortName(String shortName) {
         ArrayList<String> shortNames = new ArrayList<String>(Arrays.asList(SHORT_NAMES));

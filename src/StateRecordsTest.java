@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 /**
  * Created by test on 7/31/2015.
  */
-class StateRecordsTest {
+public class StateRecordsTest {
 
     StateRecords records;
     String KAxml, TNxml, KLxml;
@@ -25,7 +25,13 @@ class StateRecordsTest {
     }
 
     @Test
-    public void testAddState() throws Exception {
+    public void testGetMsg() throws Exception {
+        assertEquals(records.getMsg("TN"), TNxml);
+        assertEquals(records.getMsg("Random"), StateConstants.NOT_FOUND);
+    }
+
+    @Test
+    public void testAddRecord() throws Exception {
         assertEquals(records.addRecord("ODISHA", "OD", "BHUBANESWAR", "ODIA"),"ODISHA,OD,BHUBANESWAR,ODIA");
     }
 

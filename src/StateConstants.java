@@ -1,7 +1,7 @@
 package StateDetails.src;
 
 /**
- * Created by test on 7/30/2015.
+ * @author Priyanshu Sekhar Patra
  */
 class StateConstants {
     public static final String STATE = "State";

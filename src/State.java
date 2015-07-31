@@ -1,7 +1,7 @@
 package StateDetails.src;
 
 /**
- * Created by test on 7/30/2015.
+ * @author Priyanshu Sekhar Patra
  */
 class State {
     private String name;

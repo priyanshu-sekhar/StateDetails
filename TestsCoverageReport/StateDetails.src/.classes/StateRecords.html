@@ -1,0 +1,169 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: StateRecords</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">StateDetails.src</a> ]
+</div>
+
+<h1>Coverage Summary for Class: StateRecords (StateDetails.src)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">StateRecords</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/ 9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    97.1%
+  </span>
+  <span class="absValue">
+    (33/ 34)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package StateDetails.src;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.util.ArrayList;
+<i>4</i>&nbsp;import java.util.Arrays;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;/**
+<i>7</i>&nbsp; * Database class to which a State can be added or retrieved from
+<i>8</i>&nbsp; */
+<b class="fc"><i>9</i>&nbsp;public class StateRecords extends StateConstants{</b>
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    public String getMsg(String shortName) {
+<b class="fc"><i>12</i>&nbsp;        int index = getShortName(shortName);</b>
+<b class="fc"><i>13</i>&nbsp;        if (index == -1)</b>
+<b class="nc"><i>14</i>&nbsp;            return NOT_FOUND;</b>
+<b class="fc"><i>15</i>&nbsp;        return (new State(NAMES[index], shortName, HEADQS[index], LANGUAGES[index])).toString();</b>
+<i>16</i>&nbsp;    }
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;    /**
+<i>19</i>&nbsp;     * This adds a new State to the existing database
+<i>20</i>&nbsp;     * @param name Name of the State
+<i>21</i>&nbsp;     * @param shortName Short-notation/Abbreviation of the State
+<i>22</i>&nbsp;     * @param headq Headquarters of the State
+<i>23</i>&nbsp;     * @param language Official language of the State
+<i>24</i>&nbsp;     */
+<i>25</i>&nbsp;    public String addRecord(String name, String shortName, String headq, String language){
+<b class="fc"><i>26</i>&nbsp;        return addName(name) + &quot;,&quot; + addShortName(shortName) + &quot;,&quot; + addHeadq(headq) + &quot;,&quot; + addLanguage(language);</b>
+<i>27</i>&nbsp;    }
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    private String addName(String stateName){
+<b class="fc"><i>30</i>&nbsp;        ArrayList&lt;String&gt; stateNames = new ArrayList&lt;String&gt;(Arrays.asList(NAMES));</b>
+<b class="fc"><i>31</i>&nbsp;        stateNames.add(stateName);</b>
+<b class="fc"><i>32</i>&nbsp;        NAMES = new String[stateNames.size()];</b>
+<b class="fc"><i>33</i>&nbsp;        NAMES = stateNames.toArray(NAMES);</b>
+<i>34</i>&nbsp;
+<b class="fc"><i>35</i>&nbsp;        return NAMES[NAMES.length - 1];</b>
+<i>36</i>&nbsp;    }
+<i>37</i>&nbsp;
+<i>38</i>&nbsp;    private String addShortName(String shortName) {
+<b class="fc"><i>39</i>&nbsp;        ArrayList&lt;String&gt; shortNames = new ArrayList&lt;String&gt;(Arrays.asList(SHORT_NAMES));</b>
+<b class="fc"><i>40</i>&nbsp;        shortNames.add(shortName);</b>
+<b class="fc"><i>41</i>&nbsp;        SHORT_NAMES = new String[shortNames.size()];</b>
+<b class="fc"><i>42</i>&nbsp;        SHORT_NAMES = shortNames.toArray(SHORT_NAMES);</b>
+<i>43</i>&nbsp;
+<b class="fc"><i>44</i>&nbsp;        return SHORT_NAMES[SHORT_NAMES.length - 1];</b>
+<i>45</i>&nbsp;    }
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;    private String addHeadq(String headq) {
+<b class="fc"><i>48</i>&nbsp;        ArrayList&lt;String&gt; headqs = new ArrayList&lt;String&gt;(Arrays.asList(HEADQS));</b>
+<b class="fc"><i>49</i>&nbsp;        headqs.add(headq);</b>
+<b class="fc"><i>50</i>&nbsp;        HEADQS = new String[headqs.size()];</b>
+<b class="fc"><i>51</i>&nbsp;        HEADQS = headqs.toArray(HEADQS);</b>
+<i>52</i>&nbsp;
+<b class="fc"><i>53</i>&nbsp;        return HEADQS[HEADQS.length - 1];</b>
+<i>54</i>&nbsp;    }
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;    private String addLanguage(String language) {
+<b class="fc"><i>57</i>&nbsp;        ArrayList&lt;String&gt; languages = new ArrayList&lt;String&gt;(Arrays.asList(LANGUAGES));</b>
+<b class="fc"><i>58</i>&nbsp;        languages.add(language);</b>
+<b class="fc"><i>59</i>&nbsp;        LANGUAGES = new String[languages.size()];</b>
+<b class="fc"><i>60</i>&nbsp;        LANGUAGES = languages.toArray(LANGUAGES);</b>
+<i>61</i>&nbsp;
+<b class="fc"><i>62</i>&nbsp;        return LANGUAGES[LANGUAGES.length - 1];</b>
+<i>63</i>&nbsp;    }
+<i>64</i>&nbsp;
+<i>65</i>&nbsp;    /**
+<i>66</i>&nbsp;     * This is called to retrieve a State&#39;s details from the database using it&#39;s Short-Notation
+<i>67</i>&nbsp;     * @param shortName The Short-Notation of the desired State
+<i>68</i>&nbsp;     * @return details if the State exists in the records, else &quot;Data Not Found&quot;
+<i>69</i>&nbsp;     */
+<i>70</i>&nbsp;    public String getState(String shortName){
+<b class="fc"><i>71</i>&nbsp;        int index = getShortName(shortName);</b>
+<b class="fc"><i>72</i>&nbsp;        if (index == -1)</b>
+<b class="fc"><i>73</i>&nbsp;            return NOT_FOUND;</b>
+<b class="fc"><i>74</i>&nbsp;        return (new State(NAMES[index], shortName, HEADQS[index], LANGUAGES[index])).toString();</b>
+<i>75</i>&nbsp;
+<i>76</i>&nbsp;    }
+<i>77</i>&nbsp;
+<i>78</i>&nbsp;
+<i>79</i>&nbsp;    private int getShortName(String shortName) {
+<b class="fc"><i>80</i>&nbsp;        ArrayList&lt;String&gt; shortNames = new ArrayList&lt;String&gt;(Arrays.asList(SHORT_NAMES));</b>
+<i>81</i>&nbsp;
+<b class="fc"><i>82</i>&nbsp;        if (shortNames.contains(shortName))</b>
+<b class="fc"><i>83</i>&nbsp;            return shortNames.indexOf(shortName);</b>
+<b class="fc"><i>84</i>&nbsp;        return -1;</b>
+<i>85</i>&nbsp;    }
+<i>86</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2015-07-31 09:12</div>
+</div>
+</body>
+</html>
